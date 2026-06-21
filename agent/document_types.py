@@ -86,6 +86,15 @@ GUIDANCE_SPEC = DocumentTypeSpec(
             "consistent with",
             "as applicable",
         ],
+        "industry_terms": [
+            "wayside signaling",
+            "interlocking",
+            "signal aspect",
+            "track occupancy",
+            "fail-safe design",
+            "TC CTC standards",
+            "Transport Canada oversight",
+        ],
     },
     sections=[
         "Cover Page",
@@ -145,6 +154,15 @@ INSTRUCTION_MANUAL_SPEC = DocumentTypeSpec(
             "Follow these steps",
             "When finished",
             "If you encounter",
+        ],
+        "industry_terms": [
+            "wayside cabinet",
+            "signal bungalow",
+            "point machine",
+            "balise",
+            "axle counter",
+            "vital relay",
+            "commissioning checklist",
         ],
     },
     sections=[
@@ -209,6 +227,15 @@ PROCESS_WORKFLOW_SPEC = DocumentTypeSpec(
             "The responsible party shall",
             "In the event of",
             "Refer to [document] for",
+        ],
+        "industry_terms": [
+            "movement authority",
+            "route locking",
+            "signal proving",
+            "degraded mode operations",
+            "maintenance possession",
+            "block section release",
+            "incident response control center",
         ],
     },
     sections=[
@@ -296,14 +323,17 @@ def detect_document_type(text: str) -> DocumentType:
     guidance_keywords = [
         "policy", "guidance", "shall", "requirement", "compliance",
         "regulation", "mandate", "standard", "directive",
+        "railway", "signaling", "hitachi rail", "transport canada",
     ]
     instruction_keywords = [
         "step", "click", "select", "install", "press", "enter",
         "instruction", "how to", "procedure", "tutorial",
+        "wayside", "interlocking", "point machine", "axle counter", "balise",
     ]
     workflow_keywords = [
         "workflow", "process", "swimlane", "flowchart", "trigger",
         "approval", "escalat", "raci", "decision point", "bpmn",
+        "movement authority", "route locking", "track occupancy", "signal aspect",
     ]
 
     scores = {

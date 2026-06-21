@@ -55,6 +55,16 @@ class TestDocumentTypeSpecs:
         assert "click" in verbs
         assert "select" in verbs
 
+    def test_instruction_manual_includes_rail_signaling_terms(self):
+        terms = INSTRUCTION_MANUAL_SPEC.vocabulary.get("industry_terms", [])
+        assert "interlocking" in terms
+        assert "axle counter" in terms
+
+    def test_process_workflow_includes_rail_signaling_terms(self):
+        terms = PROCESS_WORKFLOW_SPEC.vocabulary.get("industry_terms", [])
+        assert "movement authority" in terms
+        assert "route locking" in terms
+
     def test_guidance_sections_include_purpose(self):
         section_names_lower = [s.lower() for s in GUIDANCE_SPEC.sections]
         assert any("purpose" in s for s in section_names_lower)
@@ -87,3 +97,11 @@ class TestDetectDocumentType:
     def test_detects_guidance_with_requirement_keyword(self):
         text = "All systems shall meet the security requirements defined herein."
         assert detect_document_type(text) == DocumentType.GUIDANCE
+
+    def test_detects_instruction_manual_from_signaling_terms(self):
+        text = "Step 1: Open the wayside cabinet and verify interlocking status."
+        assert detect_document_type(text) == DocumentType.INSTRUCTION_MANUAL
+
+    def test_detects_process_workflow_from_signaling_terms(self):
+        text = "This workflow controls movement authority and route locking through signaling."
+        assert detect_document_type(text) == DocumentType.PROCESS_WORKFLOW
