@@ -158,6 +158,7 @@ INSTRUCTION_MANUAL_SPEC = DocumentTypeSpec(
         "industry_terms": [
             "wayside cabinet",
             "signal bungalow",
+            "interlocking",
             "point machine",
             "balise",
             "axle counter",
