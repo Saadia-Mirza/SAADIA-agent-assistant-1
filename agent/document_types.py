@@ -324,7 +324,7 @@ def detect_document_type(text: str) -> DocumentType:
     guidance_keywords = [
         "policy", "guidance", "shall", "requirement", "compliance",
         "regulation", "mandate", "standard", "directive",
-        "railway", "signaling", "hitachi rail", "transport canada",
+        "railway", "signaling", "wayside signaling", "interlocking",
     ]
     instruction_keywords = [
         "step", "click", "select", "install", "press", "enter",
